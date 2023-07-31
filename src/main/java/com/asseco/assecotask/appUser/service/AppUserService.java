@@ -191,8 +191,7 @@ public class AppUserService {
         if (pageNumber == null) {
             pageNumber = 0;
         }
-        int page = Math.max(pageNumber, 0);
-        return page;
+        return Math.max(pageNumber, 0);
     }
 
 

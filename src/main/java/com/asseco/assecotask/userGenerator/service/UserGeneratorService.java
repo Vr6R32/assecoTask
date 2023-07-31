@@ -79,7 +79,7 @@ public class UserGeneratorService {
     }
 
     private ContactInfo generateRandomContactInfo(List<ContactType> contactTypesList) {
-        ContactInfo randomContactInfo = null;
+        ContactInfo randomContactInfo;
 
         int randomIndex = random.nextInt(contactTypesList.size());
         ContactType randomContactType = contactTypesList.get(randomIndex);
