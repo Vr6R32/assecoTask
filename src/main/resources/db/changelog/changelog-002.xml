@@ -1,0 +1,24 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="5" author="michal-k">
+        <insert tableName="app_user_contact_types">
+            <column name="contact_type_name" value="registered address"/>
+        </insert>
+        <insert tableName="app_user_contact_types">
+            <column name="contact_type_name" value="residence address"/>
+        </insert>
+        <insert tableName="app_user_contact_types">
+            <column name="contact_type_name" value="mobile phone"/>
+        </insert>
+        <insert tableName="app_user_contact_types">
+            <column name="contact_type_name" value="business phone"/>
+        </insert>
+        <insert tableName="app_user_contact_types">
+            <column name="contact_type_name" value="email"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

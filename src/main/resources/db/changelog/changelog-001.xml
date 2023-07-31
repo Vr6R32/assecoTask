@@ -1,0 +1,56 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+
+    <changeSet id="1" author="michal-k">
+        <createTable tableName="app_user_contact_types">
+            <column name="id" type="BIGSERIAL">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="contact_type_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2" author="michal-k">
+        <createTable tableName="app_user">
+            <column name="id" type="BIGSERIAL">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="last_name" type="VARCHAR(255)"/>
+            <column name="personal_identification_number" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_time" type="TIMESTAMP(6)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="3" author="michal-k">
+        <createTable tableName="app_user_contacts">
+            <column name="id" type="BIGSERIAL">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="app_user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="contact_type_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="contact_info_value" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="4" author="michal-k">
+        <addForeignKeyConstraint baseTableName="app_user_contacts" baseColumnNames="app_user_id"
+                                 constraintName="fk_appuser" referencedTableName="app_user"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="app_user_contacts" baseColumnNames="contact_type_id"
+                                 constraintName="fk_contacttype" referencedTableName="app_user_contact_types"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
+</databaseChangeLog>
