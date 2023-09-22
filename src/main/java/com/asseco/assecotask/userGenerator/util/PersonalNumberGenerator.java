@@ -25,7 +25,6 @@ public class PersonalNumberGenerator {
         long minDay = minBirthDate.toEpochDay();
         long maxDay = maxBirthDate.toEpochDay();
 
-
         long randomDay = ThreadLocalRandom.current().nextLong(minDay, maxDay + 1);
 
         return LocalDate.ofEpochDay(randomDay);

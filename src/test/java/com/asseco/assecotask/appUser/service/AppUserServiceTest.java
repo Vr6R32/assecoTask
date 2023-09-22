@@ -101,7 +101,7 @@ public class AppUserServiceTest {
 
 
         assertThatThrownBy(() -> underTest.insertNewUser(request)).isInstanceOf(IllegalStateException.class)
-                .hasMessageContaining("User with this personal identification number already exists !");
+                .hasMessageContaining("User with this personal identification number already exist !");
     }
 
     @Test

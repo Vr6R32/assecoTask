@@ -18,8 +18,8 @@ public class UserGeneratorService {
 
     private final AppUserRepository appUserRepository;
     private final ContactTypeRepository contactTypeRepository;
-    private Faker faker = null;
-    private Random random = null;
+    private Faker faker;
+    private Random random;
 
     public UserGeneratorService(AppUserRepository appUserRepository, ContactTypeRepository contactTypeRepository) {
         this.appUserRepository = appUserRepository;
@@ -42,12 +42,22 @@ public class UserGeneratorService {
 
             Set<ContactInfo> contactInfoList = new HashSet<>();
 
-            int randomInt = getRandomIntInRange(2, 4);
+            int randomContactsToGenerate = getRandomIntInRange(2, 4);
 
-            for (int j = 0; j < randomInt; j++) {
+            Map<String, ContactInfo> contactInfoMap = new HashMap<>();
+
+            while(contactInfoMap.size()<randomContactsToGenerate){
                 ContactInfo randomContactInfo = generateRandomContactInfo(contactTypesList);
-                contactInfoList.add(randomContactInfo);
+                String contactTypeName = randomContactInfo.getContactType().getContactTypeName();
+
+                if(!contactInfoMap.containsKey(contactTypeName)){
+                    contactInfoMap.put(contactTypeName, randomContactInfo);
+                    contactInfoList.add(randomContactInfo);
+                }
             }
+
+
+
 
             String name = faker.name().firstName();
             String lastName = faker.name().lastName();

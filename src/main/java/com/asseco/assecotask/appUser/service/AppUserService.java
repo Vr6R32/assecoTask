@@ -115,6 +115,7 @@ public class AppUserService {
         Pageable pageable = PageRequest.of(getPage(pageNumber), pageSize, sortById);
 
         Page<Long> userIdsPage = appUserRepository.findAllUserIdsPageable(pageable);
+
         List<Long> userIds = userIdsPage.getContent();
 
         List<AppUser> usersWithContacts = appUserRepository.findUsersWithContacts(userIds);

@@ -20,7 +20,7 @@ public interface AppUserRepository extends JpaRepository<AppUser, Long> {
     @Query("SELECT a.id FROM AppUser a")
     Page<Long> findAllUserIdsPageable(Pageable pageable);
 
-    @Query("SELECT DISTINCT a FROM AppUser a " +
+    @Query("SELECT a FROM AppUser a " +
             "LEFT JOIN FETCH a.contactInfos contactInfo " +
             "LEFT JOIN FETCH contactInfo.contactType " +
             "WHERE a.id IN :userIds " +
